@@ -1,10 +1,10 @@
-/* Maslul PWA v1.9.5 — keep localStorage untouched while upgrading code. */
-const CACHE='maslul-unified-v1.9.5';
+/* Maslul PWA v1.9.6 — keep localStorage untouched while upgrading code. */
+const CACHE='maslul-unified-v1.9.6';
 const ASSETS=[
  './','./index.html',
- './style.css?v=1.9.5','./app.js?v=1.9.5','./imports.js?v=1.9.5',
- './manifest.webmanifest?v=1.9.5',
- './icons/icon-192.png','./icons/icon-512.png', './decision_insights.js?v=1.9.5'
+ './style.css?v=1.9.6','./app.js?v=1.9.6','./xlsx_reader.js?v=1.9.6','./imports.js?v=1.9.6',
+ './manifest.webmanifest?v=1.9.6',
+ './icons/icon-192.png','./icons/icon-512.png', './decision_insights.js?v=1.9.6'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));

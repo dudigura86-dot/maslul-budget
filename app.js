@@ -2,7 +2,7 @@
 'use strict';
 const STORAGE_KEY='maslul-budget-v1';
 const LEGACY_FRIEND_STORAGE_KEY='maslul-budget-friend-clean-v1';
-const APP_BUILD='1.9.5';
+const APP_BUILD='1.9.6';
 const DEFAULT_CATEGORIES=[
  {id:'home',name:'דיור וחשבונות',icon:'⌂',items:[
   ['rent','שכר דירה',0,10000,100],['arnona','ארנונה',0,1200,25],['vaad','ועד בית',0,900,25],['electricity','חשמל',0,1500,25],['water','מים וביוב',0,550,10],['gas','גז',0,300,10]]},
@@ -1075,7 +1075,7 @@ function bind(){setting('headerBack')?.addEventListener('click',goBackPage);docu
  setting('googleGuideCancel').addEventListener('click',closeGoogleAccountGuide);
  setting('googleGuideForm').addEventListener('submit',e=>{e.preventDefault();saveGoogleGuideKey();});
  setupPageSwipe();document.addEventListener('keydown',e=>{if(e.key==='Escape')return;});window.addEventListener('storage',e=>{if(e.key===STORAGE_KEY){try{state=safeLoad();syncCatalog();render();toast('הנתונים עודכנו בלשונית אחרת.')}catch{}}});}
-function init(){bind();navigate('dashboard');if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js?v=1.9.5',{updateViaCache:'none'}).catch(err=>console.warn('SW registration failed',err));if(!HAS_PREEXISTING_BUDGET&&!localStorage.getItem(INTRO_KEY)){onboardingModal(0);}}
+function init(){bind();navigate('dashboard');if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js?v=1.9.6',{updateViaCache:'none'}).catch(err=>console.warn('SW registration failed',err));if(!HAS_PREEXISTING_BUDGET&&!localStorage.getItem(INTRO_KEY)){onboardingModal(0);}}
 init();
 
 // Monthly opening-balance control on dashboard and forecast; no new login or data store.

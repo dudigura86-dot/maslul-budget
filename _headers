@@ -17,6 +17,9 @@
 /imports.js
   Cache-Control: no-cache, must-revalidate
 
+/xlsx_reader.js
+  Cache-Control: no-cache, must-revalidate
+
 /decision_insights.js
   Cache-Control: no-cache, must-revalidate
 
