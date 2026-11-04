@@ -1,0 +1,18 @@
+{
+  "id":"./",
+  "name":"אפליקציית מסלול – תכנון תקציב",
+  "short_name":"מסלול",
+  "description":"תקציב אישי, הוצאות, תחזית למספר חודשים לפי בחירה ותובנות AI",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "display_override":["standalone","minimal-ui"],
+  "background_color":"#f5f8fc",
+  "theme_color":"#0c2341",
+  "dir":"rtl",
+  "lang":"he",
+  "icons":[
+    {"src":"./icons/icon-192.png","type":"image/png","sizes":"192x192","purpose":"any maskable"},
+    {"src":"./icons/icon-512.png","type":"image/png","sizes":"512x512","purpose":"any maskable"}
+  ]
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0c2341">
+  <meta name="description" content="מסלול — אפליקציית תקציב פרטית במכשיר, תחזית ותובנות AI">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="color-scheme" content="light">
+  <link rel="manifest" href="./manifest.webmanifest?v=1.9.5">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./style.css?v=1.9.5">
+  <title>אפליקציית מסלול – תכנון תקציב</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <button class="brand brand-home" id="brandHome" type="button" aria-label="מסלול — חזרה לעמוד הבית"><span class="brandmark" aria-hidden="true">₪</span><span><strong>מסלול</strong><small>תכנון תקציב</small></span></button>
+      <div class="top-actions">
+        <button class="icon-button header-back" id="headerBack" type="button" aria-label="אחורה — חזרה לעמוד הקודם" title="חזור לעמוד הקודם" disabled><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 12H5m7-7-7 7 7 7"/></svg></button>
+        <button class="icon-button header-home" id="headerHome" type="button" aria-label="חזרה לבית" title="חזרה לבית"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></button>
+        <form class="header-search" id="headerSearchForm" role="search"><label class="sr-only" for="headerSearchInput">חיפוש עזרה באפליקציה</label><input id="headerSearchInput" type="search" placeholder="חפש באפליקציה" maxlength="220" autocomplete="off" aria-label="חפש באפליקציה"><button id="headerSearchButton" type="submit" aria-label="חפש עזרה" title="חפש עזרה"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 5 5"/></svg></button></form>
+        <span class="privacy"><span class="privacy-dot"></span> פרטי · מקומי במכשיר</span>
+        <button class="icon-button" id="helpBtn" type="button" aria-label="עזרה">?</button>
+      </div>
+    </header>
+    <main class="main">
+      <section class="heading-area"><div><div class="eyebrow" id="pageEyebrow">בית</div><h1 id="pageTitle">התמונה הכספית שלי</h1><p id="pageSubtitle">הוצאות, הכנסות וחיסכון — במקום אחד.</p></div><div class="month-wrap" id="monthWrap"><label for="activeMonth">חודש עבודה</label><input id="activeMonth" type="month" value="2026-10"></div></section>
+      <div id="pageDashboard" class="page active"></div>
+      <div id="pageBudget" class="page"></div>
+      <div id="pageImports" class="page"></div>
+      <div id="pageEvents" class="page"></div>
+      <div id="pageForecast" class="page"></div>
+      <div id="pageInsights" class="page"></div>
+      <div id="pageSettings" class="page"></div>
+    </main>
+    <nav class="nav" aria-label="ניווט ראשי">
+      <button data-nav="dashboard" class="nav-btn active" type="button"><span class="nav-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9"/><path d="M9 21v-7h6v7"/></svg></span><span>בית</span></button>
+      <button data-nav="budget" class="nav-btn" type="button"><span class="nav-ico">☷</span><span>תקציב</span></button>
+      <button data-nav="imports" class="nav-btn" type="button"><span class="nav-ico">⇪</span><span>ייבוא</span></button>
+      <button data-nav="events" class="nav-btn" type="button"><span class="nav-ico">✦</span><span>הוצאות מיוחדות</span></button>
+      <button data-nav="forecast" class="nav-btn" type="button"><span class="nav-ico">▥</span><span>תחזית</span></button>
+      <button data-nav="insights" class="nav-btn" type="button"><span class="nav-ico">✧</span><span>תובנות</span></button>
+      <button data-nav="settings" class="nav-btn" type="button"><span class="nav-ico">⚙</span><span>הגדרות</span></button>
+    </nav>
+  </div>
+  <dialog id="modal"><form method="dialog" id="modalForm"><div class="modal-title"><h2 id="modalHeading"></h2><button type="button" value="cancel" id="modalClose" class="icon-button close" aria-label="סגור חלון">✕</button></div><div id="modalBody"></div><div class="modal-actions"><button type="button" class="btn secondary" id="modalCancel">ביטול</button><button type="submit" class="btn primary" id="modalSave">שמירה</button></div></form></dialog>
+  <dialog id="googleGuideModal" class="google-guide-dialog" aria-labelledby="googleGuideHeading" dir="rtl">
+    <form id="googleGuideForm" autocomplete="off">
+      <div class="modal-title"><h2 id="googleGuideHeading">התחברות ל-Google / יצירת מפתח</h2><button id="googleGuideClose" class="icon-button close" type="button" aria-label="סגור וחזור למסך הקודם">✕</button></div>
+      <div class="setup-explanation">
+        <div class="note">מסלול אינו מבקש את סיסמת Google. בוחרים חשבון באתר הרשמי של Google ויוצרים בו מפתח API אישי.</div>
+        <ol class="setup-steps">
+          <li><strong>בחירת חשבון:</strong> פתח את בחירת החשבון של Google. ניתן לבחור חשבון אחר או להוסיף חשבון חדש.</li>
+          <li><strong>יצירת מפתח:</strong> ב־Google AI Studio בחר Create API key ואת פרויקט Google הרצוי.</li>
+          <li><strong>חזרה למסלול:</strong> העתק את המפתח, חזור לאפליקציה והדבק אותו בשדה שלמטה.</li>
+        </ol>
+        <div class="button-row setup-links">
+          <a class="btn secondary" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Faistudio.google.com%2Fapi-keys" target="_blank" rel="noopener noreferrer">בחירת חשבון Google ↗</a>
+          <a class="btn primary" href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener noreferrer">יצירת מפתח ↗</a>
+        </div>
+        <label class="control" style="margin-top:18px"><span>מפתח API (אופציונלי עד שתקבל אותו)</span><input id="googleGuideKey" type="password" autocomplete="off" placeholder="הדבק כאן את המפתח" aria-label="מפתח AI API"></label>
+        <label class="checkline" style="margin:12px 0"><input id="googleGuideRemember" type="checkbox">שמור את המפתח במכשיר הזה</label>
+        <p class="tiny">שמירה במכשיר פרטי בלבד. המפתח לא נכלל בגיבוי התקציב. השימוש ב־API עשוי להיות כרוך בעלות.</p>
+      </div>
+      <div class="modal-actions"><button type="button" class="btn secondary" id="googleGuideCancel">חזור למסך הקודם</button><button type="submit" class="btn primary" id="googleGuideSave">שמור מפתח וחזור</button></div>
+    </form>
+  </dialog>
+  <dialog id="maslulConfirm" class="maslul-confirm" aria-labelledby="maslulConfirmHeading" dir="rtl">
+    <div class="maslul-confirm-inner">
+      <div class="maslul-confirm-brand">אפליקציית מסלול – תכנון תקציב</div>
+      <h2 id="maslulConfirmHeading">אישור פעולה</h2>
+      <p id="maslulConfirmMessage" class="maslul-confirm-message"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn secondary" id="maslulConfirmCancel">ביטול</button>
+        <button type="button" class="btn primary" id="maslulConfirmAccept">אישור</button>
+      </div>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./decision_insights.js?v=1.9.5" defer></script>
+  <script src="./app.js?v=1.9.5" defer></script>
+  <script src="./imports.js?v=1.9.5" defer></script>
+</body>
+</html>
